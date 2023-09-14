@@ -11,7 +11,7 @@ class SmartRoute:
     def __init__(self, inputFile, num_vehicles=10, start=0) -> None:
         self.num_vehicles = num_vehicles
         self.start = start
-        self.api_key = "AIzaSyCV8epBs51Sa5AwVvqTE4pdZzD84337XQA"
+        self.api_key = "" # Key in your API Key
         self.inputFile = inputFile
         self.gmaps = googlemaps.Client(key=self.api_key)
         self.flag = False
