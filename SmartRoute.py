@@ -242,7 +242,7 @@ if __name__ == "__main__":
     num_vehicles = 10
     start = 0
     sr = SmartRoute(
-        inputFile="/home/rvcsekar/Code_Development/MyGitRepository/SmartRoute/SmartRoute_Data.csv",
+        inputFile="./SmartRoute_Data.csv",
         num_vehicles=num_vehicles,
         start=start,
     )
