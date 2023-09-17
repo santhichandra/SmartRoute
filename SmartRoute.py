@@ -6,6 +6,8 @@ from fpdf import FPDF
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 from datetime import datetime
+from rich.console import Console
+from rich.theme import Theme
 
 class SmartRoute:
     def __init__(self, inputFile, num_vehicles=10, start=0) -> None:
@@ -239,6 +241,8 @@ class SmartRoute:
 
 
 if __name__ == "__main__":
+    custom_theme = Theme({'success': 'green', 'error': 'bold red'})
+    console = Console(theme=custom_theme)
     num_vehicles = 10
     start = 0
     sr = SmartRoute(
@@ -281,6 +285,7 @@ if __name__ == "__main__":
         }  # Reset the keys
         sr.genGoogleMap(source, coords, routes)
         sr.createPDF(single_route_dist)
+        console.print ("Google Maps and Route detail files generated successfully", style='success')
     else:
-        print("No solution found !")
+        print("No solution found !", style='error')
 
