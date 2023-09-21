@@ -299,5 +299,5 @@ if __name__ == "__main__":
         sr.createPDF(single_route_dist)
         console.print ("Google Maps and Route detail files generated successfully", style='success')
     else:
-        print("No solution found !", style='error')
+        console.print("No solution found !", style='error')
 
