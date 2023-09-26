@@ -10,11 +10,12 @@ from rich.console import Console
 from rich.theme import Theme
 import argparse
 
+
 class SmartRoute:
     def __init__(self, inputFile, num_vehicles=10, start=0) -> None:
         self.num_vehicles = num_vehicles
         self.start = start
-        self.api_key = "AIzaSyCV8epBs51Sa5AwVvqTE4pdZzD84337XQA" # Key in your API Key
+        self.api_key = "AIzaSyCV8epBs51Sa5AwVvqTE4pdZzD84337XQA"  # Key in your API Key
         self.inputFile = inputFile
         self.gmaps = googlemaps.Client(key=self.api_key)
         self.flag = False
@@ -242,21 +243,28 @@ class SmartRoute:
 
 
 if __name__ == "__main__":
-    custom_theme = Theme({'success': 'green', 'error': 'bold red'})
+    custom_theme = Theme({"success": "green", "error": "bold red"})
     console = Console(theme=custom_theme)
     parser = argparse.ArgumentParser()
     # num_vehicles = 1
     # start = 0
-    parser.add_argument("num_vehicles", type=int,
-                    help="Input number of vehicles available for the drops. Default = 10")
-    parser.add_argument("start", type=int,
-                    help="Input the starting location ID. Default = 0")
-    parser.add_argument("inputFile", type=str,
-                    help="Input route data filename. Default = SmartRoute_Data.csv in current directory")
+    parser.add_argument(
+        "num_vehicles",
+        type=int,
+        help="Input number of vehicles available for the drops. Default = 10",
+    )
+    parser.add_argument(
+        "start", type=int, help="Input the starting location ID. Default = 0"
+    )
+    parser.add_argument(
+        "inputFile",
+        type=str,
+        help="Input route data filename. Default = SmartRoute_Data.csv in current directory",
+    )
     args = parser.parse_args()
     num_vehicles = args.num_vehicles
     start = args.start
-    inputFile = './' + args.inputFile
+    inputFile = "./" + args.inputFile
     sr = SmartRoute(
         inputFile=inputFile,
         num_vehicles=num_vehicles,
@@ -297,7 +305,8 @@ if __name__ == "__main__":
         }  # Reset the keys
         sr.genGoogleMap(source, coords, routes)
         sr.createPDF(single_route_dist)
-        console.print ("Google Maps and Route detail files generated successfully", style='success')
+        console.print(
+            "Google Maps and Route detail files generated successfully", style="success"
+        )
     else:
-        console.print("No solution found !", style='error')
-
+        console.print("No solution found !", style="error")
